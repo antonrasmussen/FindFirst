@@ -30,6 +30,14 @@ python -m alert_historian report
 python -m alert_historian run-once
 ```
 
+## SonarQube local prep
+
+Generate the coverage report used by SonarQube:
+
+```bash
+pytest --cov=src/alert_historian --cov-report=xml:coverage.xml
+```
+
 ## Configuration
 
 Copy `.env.example` to `.env` and set:
