@@ -85,7 +85,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
-          SONAR_PROJECT_NAME: findfirst_frontend
+          SONAR_PROJECT_NAME: antonrasmussen_FindFirst_frontend
         with:
           projectBaseDir: frontend/
   sonarQubeScreenshot:
