@@ -7,6 +7,8 @@ on:
 
 jobs:
   deployment:
+    # Only run deploy if required secrets are configured
+    if: ${{ secrets.HOST != '' && secrets.USERNAME != '' && secrets.SSHKEY != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Deploy Docker Compose
