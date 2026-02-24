@@ -1,0 +1,20 @@
+[
+  {
+    "source_account": "example@gmail.com",
+    "source_message_id": "<sample-1>",
+    "alert_topic": "vector databases",
+    "alert_query_raw": "\"vector databases\"",
+    "items": [
+      {
+        "url": "https://example.com/news/vector-funding",
+        "title": "Vector database startup raises round",
+        "snippet": "Funding activity increased in the last quarter."
+      },
+      {
+        "url": "https://another.example.org/post?id=123&b=2&a=1",
+        "title": "Comparing retrieval systems",
+        "snippet": "Analysts compare architectures and costs."
+      }
+    ]
+  }
+]
