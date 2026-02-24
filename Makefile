@@ -2,7 +2,7 @@
 .DEFAULT_GOAL := default 
 CERT_FILE = ./server/src/main/resources/app.key
 ENV?=dev
-REGISTRY_OWNER?=r-sandor
+REGISTRY_OWNER?=antonrasmussen
 
 default:
 	$(MAKE) build_server & PID1=$$!; \

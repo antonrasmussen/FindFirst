@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: ghcr.io/r-sandor/findfirst-frontend:latest
+    image: ghcr.io/${REGISTRY_OWNER:-antonrasmussen}/findfirst-frontend:latest
     ports:
       - "3000:3000"
     environment:
@@ -12,7 +12,7 @@ services:
       - dev
       - backend
   server:
-    image: ghcr.io/r-sandor/findfirst-server:latest
+    image: ghcr.io/${REGISTRY_OWNER:-antonrasmussen}/findfirst-server:latest
     ports:
       - "9000:9000"
     environment:
@@ -34,7 +34,7 @@ services:
       - dev
       - frontend
   screenshot:
-    image: ghcr.io/r-sandor/findfirst-screenshot:latest
+    image: ghcr.io/${REGISTRY_OWNER:-antonrasmussen}/findfirst-screenshot:latest
     ports:
       - 8080:8080
     environment:
