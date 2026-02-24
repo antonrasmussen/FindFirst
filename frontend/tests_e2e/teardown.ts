@@ -1,5 +1,7 @@
 import { composeEnv } from "./setup";
 
-export default async function setup() {
-  composeEnv.down();
+export default async function teardown() {
+  if (composeEnv) {
+    await composeEnv.down();
+  }
 }

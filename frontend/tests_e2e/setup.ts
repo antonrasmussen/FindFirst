@@ -12,6 +12,9 @@ export let composeEnv: StartedDockerComposeEnvironment;
 export default async function setup() {
   console.log("spinning up docker");
   composeEnv = await new DockerComposeEnvironment(composeFilePath, composeFile)
+    // All services in docker-compose.yml are under profiles; without this,
+    // Docker Compose reports "no service selected" when brought up.
+    .withProfiles("dev")
     .withWaitStrategy(
       "server-1",
       Wait.forLogMessage("Started FindFirstApplication"),
