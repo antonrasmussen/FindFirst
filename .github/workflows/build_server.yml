@@ -1,0 +1,13 @@
+name: Build Server (deprecated)
+
+on:
+  # Only runnable manually; kept to satisfy existing workflow references.
+  workflow_dispatch:
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deprecated workflow
+        run: echo "build_server.yml is deprecated. Use the 'Build' workflow instead."
+

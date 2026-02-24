@@ -75,20 +75,18 @@ const GlobalNavbar: React.FC = () => {
       className="bg-body-tertiary"
     >
       <Container className={navbarView.navContainer}>
-        {isMobile ? (
-          <Navbar.Brand
-            onClick={() => router.push("/")}
-            className={` ${navbarView.navBrand}`}
-          >
-            <Image
-              src="/basic-f-v2-dark-mode-v2-fav.png"
-              width="38"
-              height="30"
-              className="d-inline-block align-top"
-              alt="FindFirst Logo"
-            />
-          </Navbar.Brand>
-        ) : null}
+        <Navbar.Brand
+          onClick={() => router.push("/")}
+          className={` ${navbarView.navBrand}`}
+        >
+          <Image
+            src="/basic-f-v2-dark-mode-v2-fav.png"
+            width="38"
+            height="30"
+            className="d-inline-block align-top"
+            alt="FindFirst Logo"
+          />
+        </Navbar.Brand>
 
         {/* Search bar stays visible always */}
         {userAuth === AuthStatus.Authorized ? <Searchbar /> : null}

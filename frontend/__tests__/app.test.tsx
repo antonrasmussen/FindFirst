@@ -10,6 +10,10 @@ import { hitEnter } from "./utilities/fireEvents";
 import { TagReqPayload } from "@type/Bookmarks/Tag";
 import Bookmark from "@type/Bookmarks/Bookmark";
 import { Providers } from "@/app/providers";
+
+vi.mock("next/font/google", () => ({
+  Libre_Baskerville: () => ({ className: "mocked-font" }),
+}));
 const userEvnt = userEvent.setup();
 
 const data = JSON.stringify(bkmkResp, null, 2);
