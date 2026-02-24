@@ -5,9 +5,15 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      REGISTRY_OWNER: ${{ github.repository_owner }}
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
@@ -27,15 +33,15 @@ jobs:
 
       - name: Build and Push Server Container
         run: |
-          make build_server
-          docker push ghcr.io/r-sandor/findfirst-server:latest
+          make build_server REGISTRY_OWNER=$REGISTRY_OWNER
+          docker push ghcr.io/$REGISTRY_OWNER/findfirst-server:latest
 
       - name: Build and Push Screenshot Container
         run: |
-          make build_screenshot
-          docker push ghcr.io/r-sandor/findfirst-screenshot:latest
+          make build_screenshot REGISTRY_OWNER=$REGISTRY_OWNER
+          docker push ghcr.io/$REGISTRY_OWNER/findfirst-screenshot:latest
 
       - name: Build and Push Frontend Container
         run: |
-          make build_frontend
-          docker push ghcr.io/r-sandor/findfirst-frontend:latest
+          make build_frontend REGISTRY_OWNER=$REGISTRY_OWNER
+          docker push ghcr.io/$REGISTRY_OWNER/findfirst-frontend:latest

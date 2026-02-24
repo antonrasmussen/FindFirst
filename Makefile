@@ -2,6 +2,7 @@
 .DEFAULT_GOAL := default 
 CERT_FILE = ./server/src/main/resources/app.key
 ENV?=dev
+REGISTRY_OWNER?=r-sandor
 
 default:
 	$(MAKE) build_server & PID1=$$!; \
@@ -17,14 +18,14 @@ ifeq ( ,$(wildcard $(CERT_FILE)))
 	cd ./server/scripts && ./createServerKeys.sh
 endif
 	cd ./server && ./gradlew clean build $(args)
-	docker build -t ghcr.io/r-sandor/findfirst-server -f ./docker/server/Dockerfile.buildlocal ./server
+	docker build -t ghcr.io/$(REGISTRY_OWNER)/findfirst-server -f ./docker/server/Dockerfile.buildlocal ./server
 
 build_screenshot:
 	cd ./screenshot && ./gradlew clean build $(args)
-	docker build -t ghcr.io/r-sandor/findfirst-screenshot -f ./docker/screenshot/Dockerfile.buildlocal ./screenshot
+	docker build -t ghcr.io/$(REGISTRY_OWNER)/findfirst-screenshot -f ./docker/screenshot/Dockerfile.buildlocal ./screenshot
 
 build_frontend: 
-	docker build -t ghcr.io/r-sandor/findfirst-frontend -f ./docker/frontend/Dockerfile --build-arg BUILDENV=$(ENV) ./frontend
+	docker build -t ghcr.io/$(REGISTRY_OWNER)/findfirst-frontend -f ./docker/frontend/Dockerfile --build-arg BUILDENV=$(ENV) ./frontend
 
 run: 
 	docker compose up
