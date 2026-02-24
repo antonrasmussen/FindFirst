@@ -144,6 +144,7 @@ jobs:
       - name: Run coverage
         run: |
           cd alert_historian
+          export PYTHONPATH="$PYTHONPATH:$GITHUB_WORKSPACE/alert_historian/src"
           pytest --cov=src/alert_historian --cov-report=xml:coverage.xml
       - name: Scan alert_historian
         uses: SonarSource/sonarqube-scan-action@v6.0.0
