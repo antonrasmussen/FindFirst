@@ -36,6 +36,12 @@ class Settings(BaseSettings):
   sync_batch_size: int = Field(default=100, alias="ALERT_HISTORIAN_SYNC_BATCH_SIZE")
   use_domain_tags: bool = Field(default=True, alias="ALERT_HISTORIAN_USE_DOMAIN_TAGS")
 
+  chroma_path: Path = Field(default=Path("./artifacts/chroma"), alias="ALERT_HISTORIAN_CHROMA_PATH")
+  embedding_model: str = Field(default="text-embedding-3-small", alias="ALERT_HISTORIAN_EMBEDDING_MODEL")
+  openai_api_key: str = Field(default="", alias="ALERT_HISTORIAN_OPENAI_API_KEY")
+  llm_model: str = Field(default="gpt-4o-mini", alias="ALERT_HISTORIAN_LLM_MODEL")
+  chronicle_path: Path = Field(default=Path("./artifacts/chronicle.md"), alias="ALERT_HISTORIAN_CHRONICLE_PATH")
+
 
 @lru_cache
 def get_settings() -> Settings:
