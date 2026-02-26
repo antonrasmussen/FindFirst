@@ -50,17 +50,21 @@ For each topic with new items today, write 1-2 sentences that:
 - Be specific and concise
 Output valid markdown. Use ## for topic headings and bullets for the story links."""
 
+  today_items_str = "\n".join(today_summary)
+  past_items_str = "\n".join(past_summary) if past_summary else "(none)"
+  chronicle_excerpt = chronicle_content[:4000] if chronicle_content else "(empty)"
+
   user = f"""Today's date: {date_str}
 
 Today's new items (by topic):
-{"\n".join(today_summary)}
+{today_items_str}
 
 Relevant past items from the vector store:
-{"\n".join(past_summary) if past_summary else "(none)"}
+{past_items_str}
 
 Chronicle excerpt:
 ---
-{chronicle_content[:4000] if chronicle_content else "(empty)"}
+{chronicle_excerpt}
 ---
 
 Write the Narrative Delta section. For each topic with new items, provide a ## heading and 1-2 sentence story link(s)."""
